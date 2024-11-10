@@ -72,7 +72,7 @@ class JournalViewModel: ObservableObject {
     func entries(for date: Date) -> [JournalEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
-
+    // faceID authentication
     func authenticateWithFaceID(completion: @escaping (Bool) -> Void) {
         let context = LAContext()
         var error: NSError?
