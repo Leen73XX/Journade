@@ -13,8 +13,8 @@ class OnboardingViewModel: ObservableObject {
     @Published var currentStepIndex: Int = 0
     @Published var dotCount: Int = 1
     let steps: [Onboarding] = [
-        Onboarding(title: "Express Freely, Privately", description: "Express yourself freely with AI—your thoughts are completely private", imageName: "Onboarding1"),
-        Onboarding(title: "Personal Insights, Tailored for You", description: "Receive weekly insights to monitor your personality and emotions through your journal entries.", imageName: "Onboarding2"),
+        Onboarding(title: "Express Yourself Freely", description: "Your thoughts are private. Keep your entries or let them fade away—your choice.", imageName: "Onboardind1"),
+        Onboarding(title: "Your Journal, Fully Protected", description: "Rest assured—your entries are safe, private, and securely locked with Face ID.", imageName: "Onboarding2"),
         Onboarding(title: "Daily Motivation, Designed for You", description: "Add our widget for personalized encouragement and start each day with insights tailored to you.", imageName: "Onboarding3")
     ]
     

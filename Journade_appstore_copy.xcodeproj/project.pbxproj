@@ -10,22 +10,9 @@
 		1D79F1482CDD5568009B2035 /* Journade_appstore_copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journade_appstore_copy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1D79F1872CDD5851009B2035 /* Exceptions for "Journade_appstore_copy" folder in "Journade_appstore_copy" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Journade-appstore-copy-Info.plist",
-			);
-			target = 1D79F1472CDD5568009B2035 /* Journade_appstore_copy */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1D79F14A2CDD5568009B2035 /* Journade_appstore_copy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				1D79F1872CDD5851009B2035 /* Exceptions for "Journade_appstore_copy" folder in "Journade_appstore_copy" target */,
-			);
 			path = Journade_appstore_copy;
 			sourceTree = "<group>";
 		};

@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct Journade_appstore_copyApp: App {
+    init() {
+       try? Tips.configure()
+    }
     var body: some Scene {
         WindowGroup {
             SplashScreenView()

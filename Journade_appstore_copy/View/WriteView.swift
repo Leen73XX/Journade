@@ -37,6 +37,9 @@ struct chatPageView: View {
     // button
     @State private var isButtonDisabled = false
     
+    // tips
+    @State var calenderTip = CalenderTip()
+    @State var sendButtonTip = SendButtonTip()
     var body: some View {
         NavigationView { // Wrap the content inside NavigationView
             ZStack {
@@ -74,7 +77,10 @@ struct chatPageView: View {
                         }
                         .padding(.trailing, 10.0)
                         .accessibilityLabel("Go to analysis page")
-                    }
+                    }.popoverTip(calenderTip)
+                        .onTapGesture {
+                            calenderTip.invalidate(reason: .actionPerformed)
+                                }
                 }
             }
             // Use .toolbarBackground(.hidden()) to hide the navigation bar's background color
@@ -204,7 +210,11 @@ struct chatPageView: View {
                                 }
                             }
                     }
-                    sendButtonView
+                    HStack{
+                       
+                        sendButtonView
+                           
+                    }.ignoresSafeArea()
                 }
                     .padding(.all)
             ).padding()
@@ -252,7 +262,10 @@ struct chatPageView: View {
                         .frame(width: 25, height: 25)
                         .foregroundColor(.white)
                 }
-            }
+            } .popoverTip(sendButtonTip)
+                .onTapGesture {
+                    sendButtonTip.invalidate(reason: .actionPerformed)
+                        }
             .accessibilityLabel("Send Journal Entry")
             .alert(isPresented: $showConfirmationAlert) {
                 Alert(

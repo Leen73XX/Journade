@@ -37,7 +37,7 @@ struct OnboardingView: View {
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     
-                if (viewModel.currentStep.imageName == "Onboarding1"){
+                if (viewModel.currentStep.imageName == "Onboardind1"){
                     Image(viewModel.currentStep.imageName)
                         .resizable()
                         .frame(width: 260, height: 200)
