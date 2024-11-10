@@ -68,7 +68,12 @@ class JournalViewModel: ObservableObject {
             saveEntries()
         }
     }
-
+    func deleteEntry(_ entry: JournalEntry) {
+            if let index = entries.firstIndex(where: { $0.id == entry.id }) {
+                entries.remove(at: index) // Remove from array
+               
+            }
+        }
     func entries(for date: Date) -> [JournalEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
