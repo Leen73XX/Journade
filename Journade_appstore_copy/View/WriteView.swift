@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
+import TipKit
 
 
 struct chatPageView: View {
@@ -18,18 +19,23 @@ struct chatPageView: View {
     // messages
     @State var showNoJournalEnterMessage = false
     @State var JournalHasSended = false
+    @State var JournalFaded = false
     
-    // timer in JournalHasSended message
-    @State private var timeRemaining: Int = 5 // Set your countdown duration here
+    
+    // timer in message
+    @State private var timeRemaining: Int = 3 // Set your countdown duration here
     @State private var timer: AnyCancellable? // To hold the timer subscription
     @State private var isCountingDown = false // To track if the countdown is active
     
     // save locally
     @StateObject private var journalManager = JournalViewModel()
     @State private var selectedDate: Date = Date()
-    @State private var mood = ["😃", "😞", "☹️", "😡", "😊", "😆", "😢"]
+    @State private var mood = ["😃","😆","😂","😊","🥳","🤯","😞", "☹️", "😡", "😢","🤝🏻","👏🏻","🤍", "💡", "🏆", "🖥️","❌"]
     @State private var selectedMood = ""
     @State private var showConfirmationAlert = false
+    
+    // button
+    @State private var isButtonDisabled = false
     
     var body: some View {
         NavigationView { // Wrap the content inside NavigationView
@@ -61,7 +67,7 @@ struct chatPageView: View {
                             Circle()
                                 .frame(width: 40, height: 40)
                                 .foregroundColor(colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
-                            Image(systemName: "chart.xyaxis.line")
+                            Image(systemName: "book.pages")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.white)
@@ -79,9 +85,10 @@ struct chatPageView: View {
     
     // Timer to reset the journal text after sending
     func startHiddenTextTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             withAnimation(.easeInOut(duration: 0.5)) {
                 writeViewModel.journal = ""
+                selectedMood = ""
             }
         }
     }
@@ -153,19 +160,33 @@ struct chatPageView: View {
                     if JournalHasSended {
                         if timeRemaining > 0 {
                             
-                            Text("The journal will save in \(timeRemaining) seconds")
+                            Text("The journal saved in calender page, check it!")
                                 .accessibilityLabel("The journal will be sent")
                                 .font(.footnote)
                                 .foregroundColor(colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
                                 .opacity(1)
                                 .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                         JournalHasSended = false
                                     }
                                 }
                         }
                     }
-                    
+                    if JournalFaded {
+                        if timeRemaining > 0 {
+                            
+                            Text("The journal will Fade in \(timeRemaining) seconds")
+                                .accessibilityLabel("The journal will be fade")
+                                .font(.footnote)
+                                .foregroundColor(colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
+                                .opacity(1)
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                        JournalFaded = false
+                                    }
+                                }
+                        }
+                    }
                     
                     if showNoJournalEnterMessage {
                         Text("Please write something before sending")
@@ -194,18 +215,38 @@ struct chatPageView: View {
             
             // Send button
             Button(action: {
-                if !writeViewModel.journal.isEmpty {
-                    // Show the confirmation alert
-                    showConfirmationAlert = true
-                    
-                } else {
-                    showNoJournalEnterMessage = true
+                if isButtonDisabled == false{
+                    if !writeViewModel.journal.isEmpty  {
+                        // Show the confirmation alert
+                        showConfirmationAlert = true
+                        isButtonDisabled = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            isButtonDisabled = false
+                        }
+                    } else {
+                        showNoJournalEnterMessage = true
+                    }
+                }else{
+                    Text("Please wait...")
+                        .accessibilityLabel("Please wait...")
+                        .font(.footnote)
+                        .foregroundColor(colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
+                        .opacity(1)
+                        .onAppear {
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                messageOpacity = 0.0
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                showNoJournalEnterMessage = false
+                                messageOpacity = 1.0
+                            }
+                        }
                 }
             }) {
                 ZStack {
                     Circle()
                         .frame(width: 50, height: 50)
-                        .foregroundColor(colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
+                        .foregroundColor(isButtonDisabled ? Color.gray : colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
                     Image(systemName: "paperplane")
                         .resizable()
                         .frame(width: 25, height: 25)
@@ -224,13 +265,15 @@ struct chatPageView: View {
                         JournalHasSended = true
                         startHiddenTextTimer()
                         startCountdown()
+                        timeRemaining = 3
                         // Start the timer to clear the journal after sending
                     },
                     secondaryButton: .destructive(Text("Fade")) {
                         // User chooses to delete, clearing the journal and emoji
-                        
-                        writeViewModel.journal = "" // Clear the journal text
-                        selectedMood = "" // Clear the emoji selection
+                        JournalFaded = true
+                        startHiddenTextTimer()
+                        startCountdown()
+                        timeRemaining = 3
                     }
                 )
             }

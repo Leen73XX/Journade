@@ -11,7 +11,7 @@ import SwiftUI
 struct Journade_appstore_copyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
         }
     }
 }

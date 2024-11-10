@@ -33,10 +33,10 @@ struct OnboardingView: View {
                 Spacer()
                 Text(viewModel.currentStep.title)
                     .accessibilityLabel("\(viewModel.currentStep.title)")
-                    .font(.title)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+                    
                 if (viewModel.currentStep.imageName == "Onboarding1"){
                     Image(viewModel.currentStep.imageName)
                         .resizable()
@@ -55,7 +55,7 @@ struct OnboardingView: View {
                     if (viewModel.currentStep.imageName == "Onboarding3"){
                         Image(viewModel.currentStep.imageName)
                             .resizable()
-                            .frame(width: 80, height: 180)
+                            .frame(width: 90, height: 180)
                     }
                     if (viewModel.currentStep.imageName == "Onboarding2"){
                         Image(viewModel.currentStep.imageName)
