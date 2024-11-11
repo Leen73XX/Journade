@@ -14,15 +14,15 @@ struct CalenderTip: Tip {
     }
     
     var message: Text? {
-        Text("You can see your keep journals here")
+        Text("You can see your keep journals here.")
     }
 }
 struct SendButtonTip: Tip {
     var title: Text {
-        Text("Two options to send !")
+        Text("Two options to send!")
     }
     
     var message: Text? {
-        Text("you can keep your journal encrypted in calender or fade it")
+        Text("You can keep your journal encrypted in Calender or fade it.")
     }
 }
