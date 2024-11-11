@@ -11,6 +11,7 @@ import TipKit
 @main
 struct Journade_appstore_copyApp: App {
     init() {
+        NotificationManager.shared.requestNotificationPermission()
        try? Tips.configure()
     }
     var body: some Scene {
