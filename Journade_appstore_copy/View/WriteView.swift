@@ -1,3 +1,5 @@
+
+
 //
 //  WriteView.swift
 //  Journade_New_Solution2_WithoutSwiftData
@@ -37,6 +39,7 @@ struct chatPageView: View {
     // button
     @State private var isButtonDisabled = false
     
+    
     // tips
     @State var calenderTip = CalenderTip()
     @State var sendButtonTip = SendButtonTip()
@@ -48,9 +51,10 @@ struct chatPageView: View {
                     .ignoresSafeArea() // This ensures the background extends behind the navigation bar
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    moodSelectionView
-                    journalEntryView
-                    
+                    ScrollView{
+                        moodSelectionView
+                        journalEntryView
+                    }
                     Spacer()
                 }
                 
@@ -150,19 +154,26 @@ struct chatPageView: View {
         .padding()
     }
     private var journalEntryView: some View {
+        ZStack{
         RoundedRectangle(cornerRadius: 30)
+            
             .foregroundColor(colorScheme == .dark ? Theme.backgroundDarkMoodColor : Color.white)
             .frame(width: .infinity)
-            .overlay(
+            VStack{
                 VStack {
-                    TextField("What's on your mind today?", text: $writeViewModel.journal)
-                        .accessibilityLabel("What's on your mind today? write your journal here")
-                        .font(.title3)
-                        .padding(.top, 20.0)
-                       
+                    TextField("Journal here", text: $writeViewModel.journal, axis: .vertical)
+                        .frame(height: 100)
+                        
                     
-                    Spacer()
                     
+                }.padding()
+                
+                Spacer()
+                HStack{
+                    sendButtonView
+                }
+                
+            
                     if JournalHasSended {
                         if timeRemaining > 0 {
                             
@@ -210,15 +221,13 @@ struct chatPageView: View {
                                 }
                             }
                     }
-                    HStack{
-                       
-                        sendButtonView
-                           
-                    }.ignoresSafeArea()
+            }.padding()
                 }
                     .padding(.all)
-            ).padding()
+            
+            
     }
+        
     private var sendButtonView: some View {
         HStack {
             Spacer()
@@ -272,14 +281,12 @@ struct chatPageView: View {
                     title: Text("Save Your Journal"),
                     message: Text("Do you want to keep this entry, or would you prefer it to fade away?"),
                     primaryButton: .default(Text("Keep")) {
-                        
                         // User chooses to keep and send the entry
                         journalManager.addEntry(text: writeViewModel.journal, for: selectedDate, emoji: selectedMood)
                         JournalHasSended = true
                         startHiddenTextTimer()
                         startCountdown()
                         timeRemaining = 3
-                        // Start the timer to clear the journal after sending
                     },
                     secondaryButton: .destructive(Text("Fade")) {
                         // User chooses to delete, clearing the journal and emoji
@@ -289,9 +296,12 @@ struct chatPageView: View {
                         timeRemaining = 3
                     }
                 )
+
+
             }
         }
     }
+        
 }
 #Preview {
     chatPageView()

@@ -11,6 +11,7 @@ import LocalAuthentication
 
 
 class JournalViewModel: ObservableObject {
+    static let shared = JournalViewModel()
     @Published var entries: [JournalEntry] = []
     private let storageKey = "journalEntries"
     private var symmetricKey: SymmetricKey
@@ -106,5 +107,14 @@ class JournalViewModel: ObservableObject {
             return nil
         }
         return SymmetricKey(data: keyData)
+    }
+    
+    // for wedgit
+    func saveQuickThought(_ thought: String) {
+        if let encryptedText = encrypt(text: thought) {
+            let newEntry = JournalEntry(date: Date(), encryptedText: encryptedText, empji: "💭")
+            entries.append(newEntry)
+            saveEntries()
+        }
     }
     }

@@ -24,7 +24,7 @@ struct JournalView: View {
                 if isAuthenticated {
                     EntryListView(entries: journalManager.entries(for: date), journalManager: journalManager, editMode: $editMode)
                 } else {
-                    Text("Please authenticate to view your entries.")
+                    Text("Please authenticate to view your journals.")
                         .foregroundColor(Theme.Text2Color)
                         .font(.headline)
                         .padding()

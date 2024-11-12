@@ -50,7 +50,7 @@ struct CalendarView: View {
                     .edgesIgnoringSafeArea(.all) // covers the entire screen
                 
                 VStack (alignment: .leading ,spacing: 30){
-                    Text("Select a Day to View on Your Entries")
+                    Text("Select a Day to View Your Journals")
                         .fontWeight(.bold).foregroundColor(Theme.Text2Color)
                     ZStack{
                         RoundedRectangle(cornerRadius: 30)
