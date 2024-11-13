@@ -57,3 +57,25 @@ extension String {
         self[index(startIndex, offsetBy: offset)]
     }
 }
+struct CustomBackButton: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode
+    
+    func body(content: Content) -> some View {
+        content
+            .navigationBarBackButtonHidden(true) // Hide the default back button
+            .navigationBarItems(leading: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.left")
+                    .foregroundColor(colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
+                    .font(.body)
+            })
+    }
+}
+
+extension View {
+    func customBackButton() -> some View {
+        self.modifier(CustomBackButton())
+    }
+}
