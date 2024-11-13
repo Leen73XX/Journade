@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class YearViewModel: ObservableObject {
     @Published var selectedYear: Int
     @Published var displayYear: String

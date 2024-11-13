@@ -4,9 +4,8 @@
 //
 //  Created by Leen Almejarri on 05/05/1446 AH.
 //
-
-
 import Foundation
+
 struct Onboarding: Identifiable {
     let id = UUID()
     let title: String

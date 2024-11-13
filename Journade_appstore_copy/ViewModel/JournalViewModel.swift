@@ -9,9 +9,8 @@ import Foundation
 import CryptoKit
 import LocalAuthentication
 
-
 class JournalViewModel: ObservableObject {
-    static let shared = JournalViewModel()
+    
     @Published var entries: [JournalEntry] = []
     private let storageKey = "journalEntries"
     private var symmetricKey: SymmetricKey
@@ -49,6 +48,7 @@ class JournalViewModel: ObservableObject {
         return decryptedString
     }
 
+    // need in add entry to save journal
     func saveEntries() {
         if let encoded = try? JSONEncoder().encode(entries) {
             UserDefaults.standard.set(encoded, forKey: storageKey)
@@ -69,6 +69,7 @@ class JournalViewModel: ObservableObject {
             saveEntries()
         }
     }
+    // for edit button in journal page to delete journal
     func deleteEntry(_ entry: JournalEntry) {
             if let index = entries.firstIndex(where: { $0.id == entry.id }) {
                 entries.remove(at: index) // Remove from array
@@ -78,6 +79,7 @@ class JournalViewModel: ObservableObject {
     func entries(for date: Date) -> [JournalEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
+    
     // Face ID authentication
     func authenticateWithFaceID(completion: @escaping (Bool) -> Void) {
         let context = LAContext()
@@ -105,10 +107,11 @@ class JournalViewModel: ObservableObject {
             self.fallbackToPasswordAuthentication(completion: completion)
         }
     }
-
+    
+    // password
     func fallbackToPasswordAuthentication(completion: @escaping (Bool) -> Void) {
         let context = LAContext()
-        let reason = "Please authenticate to access your journal entries using your password."
+        let reason = "Please authenticate to access your journals using your password."
 
         // Attempt to authenticate using a password
         context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, authenticationError in

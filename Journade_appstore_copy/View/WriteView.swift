@@ -46,6 +46,7 @@ struct chatPageView: View {
     var body: some View {
         NavigationView { // Wrap the content inside NavigationView
             ZStack {
+                
                 // Background color that extends to edges of the screen, including the toolbar
                 Color(colorScheme == .dark ? Color.black : Theme.backgroundLightMoodColor)
                     .ignoresSafeArea() // This ensures the background extends behind the navigation bar
@@ -89,8 +90,7 @@ struct chatPageView: View {
             }
             // Use .toolbarBackground(.hidden()) to hide the navigation bar's background color
             .toolbarBackground(.hidden , for: .navigationBar)
-           
-        }
+          }
     }
     
     // Timer to reset the journal text after sending
@@ -103,7 +103,7 @@ struct chatPageView: View {
         }
     }
     
-    // Countdown function for the timer
+    // Countdown function for the timer in fade message
     func startCountdown() {
         guard !isCountingDown else { return }
         isCountingDown = true
@@ -125,7 +125,7 @@ struct chatPageView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Theme.Text2Color)
             
-            // Mood selection UI
+            // Mood selection
             RoundedRectangle(cornerRadius: 30)
                 .foregroundColor(colorScheme == .dark ? Theme.backgroundDarkMoodColor : Color.white)
                 .frame(width: .infinity, height: 80)
@@ -153,6 +153,8 @@ struct chatPageView: View {
         }
         .padding()
     }
+    
+    // journal writing rectangle
     private var journalEntryView: some View {
         ZStack{
         RoundedRectangle(cornerRadius: 30)
@@ -163,17 +165,13 @@ struct chatPageView: View {
                 VStack {
                     TextField("Journal here", text: $writeViewModel.journal, axis: .vertical)
                         .frame(height: 100)
-                        
-                    
                     
                 }.padding()
-                
                 Spacer()
                 HStack{
                     sendButtonView
                 }
                 
-            
                     if JournalHasSended {
                         if timeRemaining > 0 {
                             
@@ -226,10 +224,9 @@ struct chatPageView: View {
             }.padding()
                 }
                     .padding(.all)
-            
-            
     }
-        
+    
+     // send button on writing page
     private var sendButtonView: some View {
         HStack {
             Spacer()
@@ -276,6 +273,8 @@ struct chatPageView: View {
                     sendButtonTip.invalidate(reason: .actionPerformed)
                         }
             .accessibilityLabel("Send Journal Entry")
+            
+            // alert after click send button
             .alert(isPresented: $showConfirmationAlert) {
                 Alert(
                     title: Text("Save Your Journal"),

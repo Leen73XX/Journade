@@ -38,8 +38,6 @@
 
 /* Begin PBXFileReference section */
 		1D79F1482CDD5568009B2035 /* Journade_appstore_copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journade_appstore_copy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D79F2AF2CE29D90009B2035 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
-		1D79F2BA2CE29D90009B2035 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		1D79F2E02CE2A77E009B2035 /* JournalWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = JournalWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D79F2E12CE2A77E009B2035 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		1D79F2E32CE2A77E009B2035 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -144,8 +142,6 @@
 		1D79F2AE2CE29D90009B2035 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D79F2AF2CE29D90009B2035 /* Intents.framework */,
-				1D79F2BA2CE29D90009B2035 /* IntentsUI.framework */,
 				1D79F2E12CE2A77E009B2035 /* WidgetKit.framework */,
 				1D79F2E32CE2A77E009B2035 /* SwiftUI.framework */,
 			);

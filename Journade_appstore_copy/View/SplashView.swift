@@ -8,6 +8,7 @@
 import Foundation
 import Foundation
 import SwiftUI
+
 struct SplashScreenView: View {
     @State var isActive : Bool = false
     @State private var size = 0.01
@@ -23,32 +24,31 @@ struct SplashScreenView: View {
             }
         } else {
             
+            VStack {
                 VStack {
-                    VStack {
-                        Image("Splash")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 180, height: 150)
-                            .font(.system(size: 50))
-                            .foregroundColor(.white)
-                    }
-                    .scaleEffect(size)
-                    .opacity(opacity)
-                    .onAppear {
-                        withAnimation(.easeIn(duration: 0.5)) {
-                            self.size = 0.9
-                            self.opacity = 1.00
-                        }
-                    }
+                    Image("Splash")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 180, height: 150)
+                        .font(.system(size: 50))
+                        .foregroundColor(.white)
                 }
+                .scaleEffect(size)
+                .opacity(opacity)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        withAnimation {
-                            self.isActive = true
-                        }
+                    withAnimation(.easeIn(duration: 0.5)) {
+                        self.size = 0.9
+                        self.opacity = 1.00
                     }
                 }
-            
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        self.isActive = true
+                    }
+                }
+            }
         }
     }
 }

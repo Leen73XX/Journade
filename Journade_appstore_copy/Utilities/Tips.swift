@@ -8,6 +8,7 @@
 import Foundation
 import TipKit
 
+//
 struct CalenderTip: Tip {
     var title: Text {
         Text("Calender here!")
@@ -17,6 +18,7 @@ struct CalenderTip: Tip {
         Text("You can see your keep journals here.")
     }
 }
+
 struct SendButtonTip: Tip {
     var title: Text {
         Text("Two options to send!")
@@ -26,6 +28,7 @@ struct SendButtonTip: Tip {
         Text("You can keep your journal encrypted in Calender or fade it.")
     }
 }
+
 struct CalenderSaveJournalTip: Tip {
     var title: Text {
         Text("your journal here!")

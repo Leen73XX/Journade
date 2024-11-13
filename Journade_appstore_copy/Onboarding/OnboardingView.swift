@@ -9,20 +9,20 @@ import Foundation
 import SwiftUI
 
 struct OnboardingView: View {
+    
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var isAnimating = false
+    
     var body: some View {
+        
         NavigationView{
-            
-            
             VStack(alignment: .center, spacing: 40) {
                 HStack{
                     Spacer()
                     NavigationLink(destination: chatPageView()
                         .navigationBarBackButtonHidden(true)
-                    )
-                    {
+                    ){
                         Text("Skip")
                             .font(.headline)
                             .foregroundColor(colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
@@ -36,7 +36,8 @@ struct OnboardingView: View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
-                    
+                
+                // onbourding 1
                 if (viewModel.currentStep.imageName == "Onboardind1"){
                     Image(viewModel.currentStep.imageName)
                         .resizable()
@@ -46,17 +47,18 @@ struct OnboardingView: View {
                                 Spacer()
                                 TypingIndicatorView()
                                 
-                                
                                 Spacer()
                                 Spacer()
                             }
                         )
                 }else{
+                    // onbourding 3
                     if (viewModel.currentStep.imageName == "Onboarding3"){
                         Image(viewModel.currentStep.imageName)
                             .resizable()
                             .frame(width: 90, height: 180)
                     }
+                    // onbourding 2
                     if (viewModel.currentStep.imageName == "Onboarding2"){
                         Image(viewModel.currentStep.imageName)
                             .resizable()
@@ -76,7 +78,6 @@ struct OnboardingView: View {
                             .fill(index == viewModel.currentStepIndex ? colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor) : Color.gray)
                             .frame(width: 10, height: 10)
                             .onTapGesture {
-                                
                                 viewModel.currentStepIndex = index
                             }
                     }
@@ -85,8 +86,6 @@ struct OnboardingView: View {
                 Spacer()
                 
                 if viewModel.isLastStep() {
-                    
-                    
                     NavigationLink(destination: chatPageView().navigationBarBackButtonHidden(true)) {
                         Text("let's start!")
                             .accessibilityAddTraits([.isButton])
@@ -101,7 +100,7 @@ struct OnboardingView: View {
                     }
                     
                     
-                } else {
+                }else {
                     HStack {
                         Spacer()
                         Button(action: {
@@ -122,7 +121,6 @@ struct OnboardingView: View {
                     
                 }
             }.padding()
-            
                 .animation(
                     Animation.snappy)
         }

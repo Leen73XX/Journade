@@ -10,7 +10,7 @@ import LocalAuthentication
 
 
 struct JournalView: View {
-
+    
     @ObservedObject var journalManager: JournalViewModel
     @Environment(\.colorScheme) var colorScheme
     var date: Date
@@ -44,20 +44,20 @@ struct JournalView: View {
                 }
                 // edit button
                 ToolbarItem(placement: .navigationBarTrailing) {
-                                   Button(action: {
-                                       withAnimation {
-                                           editMode = editMode == .active ? .inactive : .active
-                                       }
-                                   }) {
-                                       Text(editMode == .active ? "Done" : "Edit") 
-                                           .foregroundColor(colorScheme == .dark ? Theme.primaryDarkMoodColor : Color(Theme.primaryLightMoodColor))
-                                   }
-                               }
-                           }
+                    Button(action: {
+                        withAnimation {
+                            editMode = editMode == .active ? .inactive : .active
+                        }
+                    }) {
+                        Text(editMode == .active ? "Done" : "Edit")
+                            .foregroundColor(colorScheme == .dark ? Theme.primaryDarkMoodColor : Color(Theme.primaryLightMoodColor))
+                    }
+                }
+            }
             .customBackButton()
         }
     }
-
+    
     // Function for Face ID authentication
     private func authenticate() {
         journalManager.authenticateWithFaceID { success in
@@ -73,27 +73,28 @@ struct EntryListView: View {
     var body: some View {
         List {
             ForEach(entries) { entry in
-                       VStack(alignment: .leading) {
-                           // Decrypt entry and display it with emoji
-                           Text(decryptEntry(entry))
-                               .font(.callout)
-                           
-                           Text("\(entry.date, formatter: timeFormatter)")
-                               .font(.subheadline)
-                               .foregroundColor(.gray)
-                       }
-                   }
-                   .onDelete(perform: deleteEntry)
+                VStack(alignment: .leading) {
+                    
+                    // Decrypt entry and display it with emoji
+                    Text(decryptEntry(entry))
+                        .font(.callout)
+                    
+                    Text("\(entry.date, formatter: timeFormatter)")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+            }
+            .onDelete(perform: deleteEntry)
             
         }.environment(\.editMode, $editMode)
         
     }
     private func deleteEntry(at offsets: IndexSet) {
-         for index in offsets {
-             let entry = entries[index]
-             journalManager.deleteEntry(entry) // Implement the delete function in your JournalViewModel
-         }
-     }
+        for index in offsets {
+            let entry = entries[index]
+            journalManager.deleteEntry(entry) // Implement the delete function in your JournalViewModel
+        }
+    }
     // Function to decrypt journal entry text
     private func decryptEntry(_ entry: JournalEntry) -> String {
         if let decryptedText = journalManager.decrypt(encryptedText: entry.encryptedText) {

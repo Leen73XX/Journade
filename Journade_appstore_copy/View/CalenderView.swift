@@ -9,6 +9,7 @@ import SwiftUI
 import TipKit
 
 struct CalendarView: View {
+    
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectedDate: Date
     @ObservedObject var journalManager: JournalViewModel
@@ -18,6 +19,7 @@ struct CalendarView: View {
     
     @State var currentYear = YearViewModel.currentYear()
     @State var calenderSaveJournalTip_ = CalenderSaveJournalTip()
+    
     // Columns for the grid, 7 columns for each day of the week
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     

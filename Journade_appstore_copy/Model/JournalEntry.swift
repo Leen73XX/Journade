@@ -8,8 +8,8 @@
 import Foundation
 
 struct JournalEntry: Codable, Identifiable {
-var id: UUID = UUID()
-var date: Date
-var encryptedText: String
-var empji : String
+    var id: UUID = UUID()
+    var date: Date
+    var encryptedText: String
+    var empji : String
 }

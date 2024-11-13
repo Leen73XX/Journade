@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 
 class OnboardingViewModel: ObservableObject {
+    
     @Published var currentStepIndex: Int = 0
     @Published var dotCount: Int = 1
     let steps: [Onboarding] = [
@@ -18,6 +19,7 @@ class OnboardingViewModel: ObservableObject {
         Onboarding(title: "Daily Motivation, Designed for You", description: "Add our widget for personalized encouragement and start each day with insights tailored to you.", imageName: "Onboarding3")
     ]
     
+    // to start onboarding step by step
     var currentStep: Onboarding {
         steps[currentStepIndex]
     }
@@ -31,13 +33,15 @@ class OnboardingViewModel: ObservableObject {
     func isLastStep() -> Bool {
         return currentStepIndex == steps.count - 1
     }
+    
+    // dot animation in first onboarding
     func startDotAnimation() {
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
-                if self.dotCount < 3 {
-                    self.dotCount += 1
-                } else {
-                    self.dotCount = 1
-                }
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            if self.dotCount < 3 {
+                self.dotCount += 1
+            } else {
+                self.dotCount = 1
             }
         }
+    }
 }
