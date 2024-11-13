@@ -78,20 +78,49 @@ class JournalViewModel: ObservableObject {
     func entries(for date: Date) -> [JournalEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
     }
-    // faceID authentication
+    // Face ID authentication
     func authenticateWithFaceID(completion: @escaping (Bool) -> Void) {
         let context = LAContext()
         var error: NSError?
-        
+
+        // Check if the device supports Face ID or other biometric authentication
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Please authenticate to access your journal entries."
+
+            // Try to authenticate using Face ID or Touch ID
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
                 DispatchQueue.main.async {
-                    completion(success)
+                    if success {
+                        // If Face ID succeeds
+                        completion(true)
+                    } else {
+                        // fails
+                        // show an alert or ask for password authentication
+                        self.fallbackToPasswordAuthentication(completion: completion)
+                    }
                 }
             }
         } else {
-            completion(false)
+            // If not available it will be back to password authentication directly
+            self.fallbackToPasswordAuthentication(completion: completion)
+        }
+    }
+
+    func fallbackToPasswordAuthentication(completion: @escaping (Bool) -> Void) {
+        let context = LAContext()
+        let reason = "Please authenticate to access your journal entries using your password."
+
+        // Attempt to authenticate using a password
+        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, authenticationError in
+            DispatchQueue.main.async {
+                if success {
+                    // If  successful
+                    completion(true)
+                } else {
+                    // If fails 
+                    completion(false)
+                }
+            }
         }
     }
 
