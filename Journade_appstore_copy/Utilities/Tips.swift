@@ -26,3 +26,12 @@ struct SendButtonTip: Tip {
         Text("You can keep your journal encrypted in Calender or fade it.")
     }
 }
+struct CalenderSaveJournalTip: Tip {
+    var title: Text {
+        Text("your journal here!")
+    }
+    
+    var message: Text? {
+        Text("click any date in calender to see your journals on that day.")
+    }
+}

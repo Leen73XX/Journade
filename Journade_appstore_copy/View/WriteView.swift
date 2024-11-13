@@ -185,6 +185,7 @@ struct chatPageView: View {
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                         JournalHasSended = false
+                                        isButtonDisabled = false
                                     }
                                 }
                         }
@@ -200,6 +201,7 @@ struct chatPageView: View {
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                         JournalFaded = false
+                                        isButtonDisabled = false
                                     }
                                 }
                         }
@@ -239,9 +241,7 @@ struct chatPageView: View {
                         // Show the confirmation alert
                         showConfirmationAlert = true
                         isButtonDisabled = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                            isButtonDisabled = false
-                        }
+                       
                     } else {
                         showNoJournalEnterMessage = true
                     }
@@ -265,7 +265,7 @@ struct chatPageView: View {
                 ZStack {
                     Circle()
                         .frame(width: 50, height: 50)
-                        .foregroundColor(isButtonDisabled ? Color.gray : colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
+                        .foregroundColor(isButtonDisabled ? Color.gray.opacity(0.3) : colorScheme == .dark ? Color(Theme.primaryDarkMoodColor) : Color(Theme.primaryLightMoodColor))
                     Image(systemName: "paperplane")
                         .resizable()
                         .frame(width: 25, height: 25)
@@ -281,6 +281,7 @@ struct chatPageView: View {
                     title: Text("Save Your Journal"),
                     message: Text("Do you want to keep this entry, or would you prefer it to fade away?"),
                     primaryButton: .default(Text("Keep")) {
+                        
                         // User chooses to keep and send the entry
                         journalManager.addEntry(text: writeViewModel.journal, for: selectedDate, emoji: selectedMood)
                         JournalHasSended = true
@@ -289,6 +290,7 @@ struct chatPageView: View {
                         timeRemaining = 3
                     },
                     secondaryButton: .destructive(Text("Fade")) {
+                        
                         // User chooses to delete, clearing the journal and emoji
                         JournalFaded = true
                         startHiddenTextTimer()

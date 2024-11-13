@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct CalendarView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -16,7 +17,7 @@ struct CalendarView: View {
     @State private var selectedYear: Int
     
     @State var currentYear = YearViewModel.currentYear()
-    
+    @State var calenderSaveJournalTip_ = CalenderSaveJournalTip()
     // Columns for the grid, 7 columns for each day of the week
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     
@@ -41,78 +42,37 @@ struct CalendarView: View {
     
     var body: some View {
         let days = daysInMonth(for: selectedMonth, year: selectedYear)
-        NavigationView{
+
+        NavigationView {
+           
             ZStack {
-                
+             
                 // Background rounded rectangle
                 RoundedRectangle(cornerRadius: 30)
                     .fill(colorScheme == .dark ? Color.black : Color(Theme.backgroundLightMoodColor))
                     .edgesIgnoringSafeArea(.all) // covers the entire screen
-                
-                VStack (alignment: .leading ,spacing: 30){
+
+                VStack(alignment: .leading, spacing: 30) {
+                    TipView(calenderSaveJournalTip_)
+                        
                     Text("Select a Day to View Your Journals")
-                        .fontWeight(.bold).foregroundColor(Theme.Text2Color)
-                    ZStack{
+                        .fontWeight(.bold)
+                        .foregroundColor(Theme.Text2Color)
+
+                    ZStack {
                         RoundedRectangle(cornerRadius: 30)
                             .foregroundColor(colorScheme == .dark ? Theme.backgroundDarkMoodColor : Color.white)
                             .frame(height: 430)
-                        
-                        
+
                         VStack {
-                            
-                            
-                            HStack (spacing: 20) {
-                                monthYearSelector
-                            }
-                            .padding()
-                            
-                            VStack {
-                                // Weekday header
-                                HStack {
-                                    ForEach(weekdays, id: \.self) { weekday in
-                                        Text(weekday)
-                                            .frame(maxWidth: .infinity)
-                                            .font(.caption)
-                                            .foregroundColor(.gray)
-                                            .padding(.vertical, 4)
-                                            .padding(.horizontal, 2)
-                                    }
-                                }
-                                
-                                // Calendar grid with days
-                                LazyVGrid(columns: columns) {
-                                    // Create empty cells before the first day of the month
-                                    ForEach(0..<paddingDays(for: selectedMonth, year: selectedYear), id: \.self) { _ in
-                                        Text("")
-                                            .frame(width: 30, height: 30)
-                                            .background(Color.clear)
-                                    }
-                                    
-                                    // Add the actual days of the month
-                                    ForEach(days, id: \.self) { day in
-                                        NavigationLink(destination: JournalView(journalManager: journalManager, date: day).navigationBarBackButtonHidden()) {
-                                            Text("\(Calendar.current.component(.day, from: day))")
-                                                .frame(width: 30, height: 30)
-                                                .background(
-                                                    // Highlight current date with a special color
-                                                    Calendar.current.isDateInToday(day)
-                                                    ? colorScheme == .dark ? Theme.primaryDarkMoodColor :Theme.primaryLightMoodColor : Color.clear)
-                                            
-                                                .cornerRadius(10)
-                                                .foregroundColor(
-                                                    // Set text color for the current day and selected day
-                                                    Calendar.current.isDateInToday(day) ? colorScheme == .dark ? Color.black : Color.white : .primary)
-                                            
-                                                .padding(5)
-                                        }
-                                    }
-                                }
-                            }
-                            .padding()
+                            monthYearSelectorView
+
+                            calendarView(days: days)
                         }
+                        .padding()
                     }
-                    
-                }.padding()
+                }
+                .padding()
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -123,13 +83,76 @@ struct CalendarView: View {
                         .padding(.top)
                         .foregroundColor(colorScheme == .dark ? Theme.primaryDarkMoodColor : Color(Theme.primaryLightMoodColor))
                 }
-                
             }
-            .toolbarBackground(.hidden , for: .navigationBar)
+            .toolbarBackground(.hidden, for: .navigationBar)
             .customBackButton()
         }
     }
-    
+
+    private var monthYearSelectorView: some View {
+        HStack(spacing: 20) {
+            monthYearSelector
+        }
+        .padding()
+    }
+    private func calendarView(days: [Date]) -> some View {
+        VStack {
+            // Weekday header
+            weekdayHeaderView
+
+            // Calendar grid with days
+            calendarGridView(days: days)
+        }
+        .padding()
+    }
+    private var weekdayHeaderView: some View {
+        HStack {
+            ForEach(weekdays, id: \.self) { weekday in
+                Text(weekday)
+                    .frame(maxWidth: .infinity)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 2)
+            }
+        }
+    }
+    private func calendarGridView(days: [Date]) -> some View {
+        LazyVGrid(columns: columns) {
+            // Create empty cells before the first day of the month
+            ForEach(0..<paddingDays(for: selectedMonth, year: selectedYear), id: \.self) { _ in
+                Text("")
+                    .frame(width: 30, height: 30)
+                    .background(Color.clear)
+            }
+
+            // Add the actual days of the month
+            ForEach(days, id: \.self) { day in
+                NavigationLink(destination: JournalView(journalManager: journalManager, date: day).navigationBarBackButtonHidden()) {
+                    Text("\(Calendar.current.component(.day, from: day))")
+                        .frame(width: 30, height: 30)
+                        .background(
+                            // Highlight current date with a special color
+                            Calendar.current.isDateInToday(day)
+                                ? colorScheme == .dark ? Theme.primaryDarkMoodColor : Theme.primaryLightMoodColor
+                                : Color.clear
+                        )
+                       
+                        .cornerRadius(10)
+                        .foregroundColor(
+                            // Set text color for the current day and selected day
+                            Calendar.current.isDateInToday(day) ? colorScheme == .dark ? Color.black : Color.white : .primary
+                        )
+                        .padding(5)
+                }.onTapGesture {
+                    calenderSaveJournalTip_.invalidate(reason: .tipClosed)
+                    }
+
+                    
+            }
+        }
+    }
+
     // Function to calculate the days in the selected month
     private func daysInMonth(for month: Int, year: Int) -> [Date] {
         let calendar = Calendar.current
