@@ -3,7 +3,7 @@
 //  Journade_appstore_copy
 //
 //  Created by Leen Almejarri on 05/05/1446 AH.
-//
+//  Edited by mariyam yasin on 09/05/1446 AH.
 
 import SwiftUI
 import TipKit

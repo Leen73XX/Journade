@@ -3,7 +3,7 @@
 //  JournalWidget
 //
 //  Created by Leen Almejarri on 09/05/1446 AH.
-//
+//  Edited by mariyam yasin on 12/05/1446 AH.
 
 import WidgetKit
 import SwiftUI
