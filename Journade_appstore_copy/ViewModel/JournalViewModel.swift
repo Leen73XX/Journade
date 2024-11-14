@@ -8,6 +8,7 @@
 import Foundation
 import CryptoKit
 import LocalAuthentication
+import WidgetKit
 
 class JournalViewModel: ObservableObject {
     
@@ -51,14 +52,23 @@ class JournalViewModel: ObservableObject {
     // need in add entry to save journal
     func saveEntries() {
         if let encoded = try? JSONEncoder().encode(entries) {
-            UserDefaults.standard.set(encoded, forKey: storageKey)
+            if let defaults = UserDefaults(suiteName: "group.com.jornal.widget") { // App Group identifier
+                defaults.set(encoded, forKey: storageKey)
+                // UserDefaults.standard.set(encoded, forKey: storageKey)
+                
+                // Trigger the widget to refresh
+                WidgetCenter.shared.reloadTimelines(ofKind: "JournalWidget")
+            }
         }
     }
 
     func loadEntries() {
-        if let data = UserDefaults.standard.data(forKey: storageKey),
-           let decodedEntries = try? JSONDecoder().decode([JournalEntry].self, from: data) {
-            entries = decodedEntries
+        if let defaults = UserDefaults(suiteName: "group.com.jornal.widget") { // App Group identifier
+            // if let data = UserDefaults.standard.data(forKey: storageKey),
+            if let data = defaults.data(forKey: storageKey),
+               let decodedEntries = try? JSONDecoder().decode([JournalEntry].self, from: data) {
+                entries = decodedEntries
+            }
         }
     }
 
@@ -130,12 +140,17 @@ class JournalViewModel: ObservableObject {
     // Store the symmetric key securely
     private static func storeKey(_ key: SymmetricKey) {
         let keyData = key.withUnsafeBytes { Data($0) }
-        UserDefaults.standard.set(keyData, forKey: "symmetricKey")
+        if let defaults = UserDefaults(suiteName: "group.com.jornal.widget") { // App Group identifier
+            defaults.set(keyData, forKey: "symmetricKey")
+            //        UserDefaults.standard.set(keyData, forKey: "symmetricKey")
+        }
     }
 
     // Retrieve the symmetric key
     private static func retrieveKey() -> SymmetricKey? {
-        guard let keyData = UserDefaults.standard.data(forKey: "symmetricKey") else {
+        guard let defaults = UserDefaults(suiteName: "group.com.jornal.widget") else { return nil }// App Group identifier
+        guard let keyData = defaults.data(forKey: "symmetricKey") else {
+            //        guard let keyData = UserDefaults.standard.data(forKey: "symmetricKey") else {
             return nil
         }
         return SymmetricKey(data: keyData)
