@@ -404,7 +404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Journade_appstore_copy/Preview Content\"";
-				DEVELOPMENT_TEAM = AY8982A7D7;
+				DEVELOPMENT_TEAM = 4439LQD9YY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Journade-appstore-copy-Info.plist";
@@ -440,7 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Journade_appstore_copy/Preview Content\"";
-				DEVELOPMENT_TEAM = AY8982A7D7;
+				DEVELOPMENT_TEAM = 4439LQD9YY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Journade-appstore-copy-Info.plist";
@@ -475,7 +475,7 @@
 				CODE_SIGN_ENTITLEMENTS = JournalWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AY8982A7D7;
+				DEVELOPMENT_TEAM = 4439LQD9YY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JournalWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = JournalWidget;
@@ -503,7 +503,7 @@
 				CODE_SIGN_ENTITLEMENTS = JournalWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AY8982A7D7;
+				DEVELOPMENT_TEAM = 4439LQD9YY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JournalWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = JournalWidget;
