@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D79F2E22CE2A77E009B2035 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D79F2E12CE2A77E009B2035 /* WidgetKit.framework */; };
-		1D79F2E42CE2A77E009B2035 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D79F2E32CE2A77E009B2035 /* SwiftUI.framework */; };
-		1D79F2F32CE2A780009B2035 /* JournalWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1D79F2E02CE2A77E009B2035 /* JournalWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1D1899482CE9CBB9002451AE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D79F2E12CE2A77E009B2035 /* WidgetKit.framework */; };
+		1D1899492CE9CBB9002451AE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D79F2E32CE2A77E009B2035 /* SwiftUI.framework */; };
+		1D1899582CE9CBBA002451AE /* journadeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1D1899472CE9CBB9002451AE /* journadeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1D79F2F12CE2A780009B2035 /* PBXContainerItemProxy */ = {
+		1D1899562CE9CBBA002451AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1D79F1402CDD5568009B2035 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1D79F2DF2CE2A77E009B2035;
-			remoteInfo = JournalWidgetExtension;
+			remoteGlobalIDString = 1D1899462CE9CBB9002451AE;
+			remoteInfo = journadeWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -29,7 +29,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				1D79F2F32CE2A780009B2035 /* JournalWidgetExtension.appex in Embed Foundation Extensions */,
+				1D1899582CE9CBBA002451AE /* journadeWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,82 +37,73 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D1899472CE9CBB9002451AE /* journadeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = journadeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D18995D2CE9CBC8002451AE /* journadeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = journadeWidgetExtension.entitlements; sourceTree = "<group>"; };
 		1D79F1482CDD5568009B2035 /* Journade_appstore_copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journade_appstore_copy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D79F2E02CE2A77E009B2035 /* JournalWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = JournalWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D79F2E12CE2A77E009B2035 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		1D79F2E32CE2A77E009B2035 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		1D79F3192CE2B6F4009B2035 /* JournalWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JournalWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1D79F3122CE2A832009B2035 /* Exceptions for "JournalWidget" folder in "Journade_appstore_copy" target */ = {
+		1D1899592CE9CBBA002451AE /* Exceptions for "journadeWidget" folder in "journadeWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
 				Info.plist,
-				JournalWidgetBundle.swift,
-				JournalWidgetControl.swift,
-				JournalWidgetLiveActivity.swift,
+			);
+			target = 1D1899462CE9CBB9002451AE /* journadeWidgetExtension */;
+		};
+		1D18995F2CE9CDC4002451AE /* Exceptions for "journadeWidget" folder in "Journade_appstore_copy" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				journadeWidget.swift,
 			);
 			target = 1D79F1472CDD5568009B2035 /* Journade_appstore_copy */;
 		};
-		1D79F3132CE2A832009B2035 /* Exceptions for "JournalWidget" folder in "JournalWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				AppIntent.swift,
-				Assets.xcassets,
-				JournalWidget.swift,
-				JournalWidgetBundle.swift,
-				JournalWidgetControl.swift,
-				JournalWidgetLiveActivity.swift,
-			);
-			target = 1D79F2DF2CE2A77E009B2035 /* JournalWidgetExtension */;
-		};
-		1D79F3162CE2AA9E009B2035 /* Exceptions for "Journade_appstore_copy" folder in "JournalWidgetExtension" target */ = {
+		1D1899612CE9D08D002451AE /* Exceptions for "Journade_appstore_copy" folder in "journadeWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Model/JournalEntry.swift,
 				Utilities/Theme.swift,
 				ViewModel/JournalViewModel.swift,
 			);
-			target = 1D79F2DF2CE2A77E009B2035 /* JournalWidgetExtension */;
+			target = 1D1899462CE9CBB9002451AE /* journadeWidgetExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		1D18994A2CE9CBB9002451AE /* journadeWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1D18995F2CE9CDC4002451AE /* Exceptions for "journadeWidget" folder in "Journade_appstore_copy" target */,
+				1D1899592CE9CBBA002451AE /* Exceptions for "journadeWidget" folder in "journadeWidgetExtension" target */,
+			);
+			path = journadeWidget;
+			sourceTree = "<group>";
+		};
 		1D79F14A2CDD5568009B2035 /* Journade_appstore_copy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1D79F3162CE2AA9E009B2035 /* Exceptions for "Journade_appstore_copy" folder in "JournalWidgetExtension" target */,
+				1D1899612CE9D08D002451AE /* Exceptions for "Journade_appstore_copy" folder in "journadeWidgetExtension" target */,
 			);
 			path = Journade_appstore_copy;
-			sourceTree = "<group>";
-		};
-		1D79F30C2CE2A832009B2035 /* JournalWidget */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				1D79F3122CE2A832009B2035 /* Exceptions for "JournalWidget" folder in "Journade_appstore_copy" target */,
-				1D79F3132CE2A832009B2035 /* Exceptions for "JournalWidget" folder in "JournalWidgetExtension" target */,
-			);
-			path = JournalWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1D1899442CE9CBB9002451AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D1899492CE9CBB9002451AE /* SwiftUI.framework in Frameworks */,
+				1D1899482CE9CBB9002451AE /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D79F1452CDD5568009B2035 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1D79F2DD2CE2A77E009B2035 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1D79F2E42CE2A77E009B2035 /* SwiftUI.framework in Frameworks */,
-				1D79F2E22CE2A77E009B2035 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,9 +113,9 @@
 		1D79F13F2CDD5568009B2035 = {
 			isa = PBXGroup;
 			children = (
-				1D79F3192CE2B6F4009B2035 /* JournalWidgetExtension.entitlements */,
-				1D79F30C2CE2A832009B2035 /* JournalWidget */,
+				1D18995D2CE9CBC8002451AE /* journadeWidgetExtension.entitlements */,
 				1D79F14A2CDD5568009B2035 /* Journade_appstore_copy */,
+				1D18994A2CE9CBB9002451AE /* journadeWidget */,
 				1D79F2AE2CE29D90009B2035 /* Frameworks */,
 				1D79F1492CDD5568009B2035 /* Products */,
 			);
@@ -134,7 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				1D79F1482CDD5568009B2035 /* Journade_appstore_copy.app */,
-				1D79F2E02CE2A77E009B2035 /* JournalWidgetExtension.appex */,
+				1D1899472CE9CBB9002451AE /* journadeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +142,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1D1899462CE9CBB9002451AE /* journadeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D18995A2CE9CBBA002451AE /* Build configuration list for PBXNativeTarget "journadeWidgetExtension" */;
+			buildPhases = (
+				1D1899432CE9CBB9002451AE /* Sources */,
+				1D1899442CE9CBB9002451AE /* Frameworks */,
+				1D1899452CE9CBB9002451AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1D18994A2CE9CBB9002451AE /* journadeWidget */,
+			);
+			name = journadeWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = journadeWidgetExtension;
+			productReference = 1D1899472CE9CBB9002451AE /* journadeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		1D79F1472CDD5568009B2035 /* Journade_appstore_copy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D79F1562CDD5569009B2035 /* Build configuration list for PBXNativeTarget "Journade_appstore_copy" */;
@@ -163,11 +176,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				1D79F2F22CE2A780009B2035 /* PBXTargetDependency */,
+				1D1899572CE9CBBA002451AE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1D79F14A2CDD5568009B2035 /* Journade_appstore_copy */,
-				1D79F30C2CE2A832009B2035 /* JournalWidget */,
 			);
 			name = Journade_appstore_copy;
 			packageProductDependencies = (
@@ -175,25 +187,6 @@
 			productName = Journade_appstore_copy;
 			productReference = 1D79F1482CDD5568009B2035 /* Journade_appstore_copy.app */;
 			productType = "com.apple.product-type.application";
-		};
-		1D79F2DF2CE2A77E009B2035 /* JournalWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1D79F2F52CE2A780009B2035 /* Build configuration list for PBXNativeTarget "JournalWidgetExtension" */;
-			buildPhases = (
-				1D79F2DC2CE2A77E009B2035 /* Sources */,
-				1D79F2DD2CE2A77E009B2035 /* Frameworks */,
-				1D79F2DE2CE2A77E009B2035 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = JournalWidgetExtension;
-			packageProductDependencies = (
-			);
-			productName = JournalWidgetExtension;
-			productReference = 1D79F2E02CE2A77E009B2035 /* JournalWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -205,10 +198,10 @@
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					1D79F1472CDD5568009B2035 = {
+					1D1899462CE9CBB9002451AE = {
 						CreatedOnToolsVersion = 16.1;
 					};
-					1D79F2DF2CE2A77E009B2035 = {
+					1D79F1472CDD5568009B2035 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
@@ -228,20 +221,20 @@
 			projectRoot = "";
 			targets = (
 				1D79F1472CDD5568009B2035 /* Journade_appstore_copy */,
-				1D79F2DF2CE2A77E009B2035 /* JournalWidgetExtension */,
+				1D1899462CE9CBB9002451AE /* journadeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1D79F1462CDD5568009B2035 /* Resources */ = {
+		1D1899452CE9CBB9002451AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1D79F2DE2CE2A77E009B2035 /* Resources */ = {
+		1D79F1462CDD5568009B2035 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,14 +244,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1D79F1442CDD5568009B2035 /* Sources */ = {
+		1D1899432CE9CBB9002451AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1D79F2DC2CE2A77E009B2035 /* Sources */ = {
+		1D79F1442CDD5568009B2035 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,14 +261,70 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1D79F2F22CE2A780009B2035 /* PBXTargetDependency */ = {
+		1D1899572CE9CBBA002451AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1D79F2DF2CE2A77E009B2035 /* JournalWidgetExtension */;
-			targetProxy = 1D79F2F12CE2A780009B2035 /* PBXContainerItemProxy */;
+			target = 1D1899462CE9CBB9002451AE /* journadeWidgetExtension */;
+			targetProxy = 1D1899562CE9CBBA002451AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1D18995B2CE9CBBA002451AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = journadeWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AY8982A7D7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = journadeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = journadeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Twq.Journade-appstore-copy.journadeWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D18995C2CE9CBBA002451AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = journadeWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AY8982A7D7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = journadeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = journadeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Twq.Journade-appstore-copy.journadeWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1D79F1542CDD5569009B2035 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -404,7 +453,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Journade_appstore_copy/Preview Content\"";
-				DEVELOPMENT_TEAM = 4439LQD9YY;
+				DEVELOPMENT_TEAM = AY8982A7D7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Journade-appstore-copy-Info.plist";
@@ -440,7 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Journade_appstore_copy/Preview Content\"";
-				DEVELOPMENT_TEAM = 4439LQD9YY;
+				DEVELOPMENT_TEAM = AY8982A7D7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Journade-appstore-copy-Info.plist";
@@ -467,65 +516,18 @@
 			};
 			name = Release;
 		};
-		1D79F2F62CE2A780009B2035 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = JournalWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4439LQD9YY;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JournalWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = JournalWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Twq.Journade-appstore-copy.JournalWidget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		1D79F2F72CE2A780009B2035 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = JournalWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4439LQD9YY;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JournalWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = JournalWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Twq.Journade-appstore-copy.JournalWidget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1D18995A2CE9CBBA002451AE /* Build configuration list for PBXNativeTarget "journadeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D18995B2CE9CBBA002451AE /* Debug */,
+				1D18995C2CE9CBBA002451AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1D79F1432CDD5568009B2035 /* Build configuration list for PBXProject "Journade_appstore_copy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -540,15 +542,6 @@
 			buildConfigurations = (
 				1D79F1572CDD5569009B2035 /* Debug */,
 				1D79F1582CDD5569009B2035 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1D79F2F52CE2A780009B2035 /* Build configuration list for PBXNativeTarget "JournalWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1D79F2F62CE2A780009B2035 /* Debug */,
-				1D79F2F72CE2A780009B2035 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

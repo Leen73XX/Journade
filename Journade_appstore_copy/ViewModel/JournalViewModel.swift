@@ -52,7 +52,7 @@ class JournalViewModel: ObservableObject {
     // need in add entry to save journal
     func saveEntries() {
         if let encoded = try? JSONEncoder().encode(entries) {
-            if let defaults = UserDefaults(suiteName: "group.com.jornal.widget") { // App Group identifier
+            if let defaults = UserDefaults(suiteName: "group.jornade.to.store.from.widget") { // App Group identifier
                 defaults.set(encoded, forKey: storageKey)
                 // UserDefaults.standard.set(encoded, forKey: storageKey)
                 
@@ -60,16 +60,18 @@ class JournalViewModel: ObservableObject {
                 WidgetCenter.shared.reloadTimelines(ofKind: "JournalWidget")
             }
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func loadEntries() {
-        if let defaults = UserDefaults(suiteName: "group.com.jornal.widget") { // App Group identifier
+        if let defaults = UserDefaults(suiteName: "group.jornade.to.store.from.widget") { // App Group identifier
             // if let data = UserDefaults.standard.data(forKey: storageKey),
             if let data = defaults.data(forKey: storageKey),
                let decodedEntries = try? JSONDecoder().decode([JournalEntry].self, from: data) {
                 entries = decodedEntries
             }
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func addEntry(text: String, for date: Date, emoji: String) {
@@ -78,13 +80,15 @@ class JournalViewModel: ObservableObject {
             entries.append(newEntry)
             saveEntries()
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
     // for edit button in journal page to delete journal
     func deleteEntry(_ entry: JournalEntry) {
             if let index = entries.firstIndex(where: { $0.id == entry.id }) {
                 entries.remove(at: index) // Remove from array
-               
+                WidgetCenter.shared.reloadAllTimelines()
             }
+       
         }
     func entries(for date: Date) -> [JournalEntry] {
         return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
@@ -140,7 +144,7 @@ class JournalViewModel: ObservableObject {
     // Store the symmetric key securely
     private static func storeKey(_ key: SymmetricKey) {
         let keyData = key.withUnsafeBytes { Data($0) }
-        if let defaults = UserDefaults(suiteName: "group.com.jornal.widget") { // App Group identifier
+        if let defaults = UserDefaults(suiteName: "group.jornade.to.store.from.widget") { // App Group identifier
             defaults.set(keyData, forKey: "symmetricKey")
             //        UserDefaults.standard.set(keyData, forKey: "symmetricKey")
         }
@@ -148,7 +152,7 @@ class JournalViewModel: ObservableObject {
 
     // Retrieve the symmetric key
     private static func retrieveKey() -> SymmetricKey? {
-        guard let defaults = UserDefaults(suiteName: "group.com.jornal.widget") else { return nil }// App Group identifier
+        guard let defaults = UserDefaults(suiteName: "group.jornade.to.store.from.widget") else { return nil }// App Group identifier
         guard let keyData = defaults.data(forKey: "symmetricKey") else {
             //        guard let keyData = UserDefaults.standard.data(forKey: "symmetricKey") else {
             return nil
@@ -157,11 +161,8 @@ class JournalViewModel: ObservableObject {
     }
     
     // for wedgit
-    func saveQuickThought(_ thought: String) {
-        if let encryptedText = encrypt(text: thought) {
-            let newEntry = JournalEntry(date: Date(), encryptedText: encryptedText, empji: "💭")
-            entries.append(newEntry)
-            saveEntries()
-        }
+    func updateWidget() {
+        // Trigger a widget update
+        WidgetCenter.shared.reloadAllTimelines()
     }
     }

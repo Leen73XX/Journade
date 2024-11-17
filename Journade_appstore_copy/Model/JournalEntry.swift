@@ -12,4 +12,5 @@ struct JournalEntry: Codable, Identifiable {
     var date: Date
     var encryptedText: String
     var empji : String
+    
 }
