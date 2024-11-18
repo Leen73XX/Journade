@@ -40,7 +40,13 @@ People who want to start becoming self-aware through blogging in the easiest way
 
 
 ## Screenshots
-![Simulator Screenshot - iPhone 16 Pro - 2024-11-18 at 10 20 20](https://github.com/user-attachments/assets/337a589e-dd11-46ac-9d78-82e22e936d61) ![Simulator Screenshot - iPhone 16 Pro - 2024-11-18 at 10 20 35](https://github.com/user-attachments/assets/737bfca4-973a-4dcf-b20e-59dad887d916) ![Simulator Screenshot - iPhone 16 Pro - 2024-11-18 at 10 20 40](https://github.com/user-attachments/assets/63daf04b-bfb3-4073-bf2b-fb718504e9e2) ![Simulator Screenshot - iPhone 16 Pro - 2024-11-18 at 10 23 17](https://github.com/user-attachments/assets/4ab7329b-7e05-4666-b886-84c595b5da0b)
+
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/337a589e-dd11-46ac-9d78-82e22e936d61" width="150" />
+  <img src="https://github.com/user-attachments/assets/737bfca4-973a-4dcf-b20e-59dad887d916" width="150" />
+  <img src="https://github.com/user-attachments/assets/63daf04b-bfb3-4073-bf2b-fb718504e9e2" width="150" />
+  <img src="https://github.com/user-attachments/assets/4ab7329b-7e05-4666-b886-84c595b5da0b" width="150" />
+</p>
 
 
 ## Installation
