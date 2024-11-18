@@ -76,10 +76,10 @@ Or open the project in Xcode
 5. To access your journals, you must first authenticate using Face ID (you’ll need to grant permission) or your password.
 6. Once authenticated, you’ll have the option to delete or manage your journal entries.
 7. Add the Journade widget to your home screen to track the number of journal entries you’ve made this month. To do so:
-8. Long-press on your home screen.
-9. Tap the "+" icon and search for "Journade".
-10. The widget will display the number of journal entries for the current month.
-11. Allow Notifications when prompted to receive daily motivational reminders. You can manage notification settings through Settings > Journade.
+  1- Long-press on your home screen.
+  2- Tap the "+" icon and search for "Journade".
+  3- The widget will display the number of journal entries for the current month.
+8. Allow Notifications when prompted to receive daily motivational reminders. You can manage notification settings through Settings > Journade.
 
 
 ## Technologies Used
