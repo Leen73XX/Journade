@@ -13,7 +13,7 @@ import Combine
 import TipKit
 
 
-struct chatPageView: View {
+struct WritePageView: View {
     @Environment(\.colorScheme) var colorScheme
     @StateObject var writeViewModel = WriteViewModel()
     @State var messageOpacity = 1.0
@@ -305,5 +305,5 @@ struct chatPageView: View {
         
 }
 #Preview {
-    chatPageView()
+    WritePageView()
 }

@@ -18,7 +18,7 @@ struct SplashScreenView: View {
     var body: some View {
         if isActive {
             if hasSeenOnboarding {
-                chatPageView()
+                WritePageView()
             } else {
                 OnboardingView()
             }

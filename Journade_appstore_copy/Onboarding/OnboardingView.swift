@@ -20,7 +20,7 @@ struct OnboardingView: View {
             VStack(alignment: .center, spacing: 40) {
                 HStack{
                     Spacer()
-                    NavigationLink(destination: chatPageView()
+                    NavigationLink(destination: WritePageView()
                         .navigationBarBackButtonHidden(true)
                     ){
                         Text("Skip")
@@ -86,7 +86,7 @@ struct OnboardingView: View {
                 Spacer()
                 
                 if viewModel.isLastStep() {
-                    NavigationLink(destination: chatPageView().navigationBarBackButtonHidden(true)) {
+                    NavigationLink(destination: WritePageView().navigationBarBackButtonHidden(true)) {
                         Text("let's start!")
                             .accessibilityAddTraits([.isButton])
                             .accessibilityLabel("Got it, let's start!")
