@@ -4,6 +4,7 @@
 Our project aims to develop a journaling app that enhances the user experience by providing motivational prompts and insights. With the implementation of cryptocurrency for secure transactions and Face ID for personalized access, this app will cater to a diverse audience. It will serve casual users seeking self-reflection, as well as mental health professionals looking to support their clients effectively.
 Objective.
 
+
 <p float="left">
   <img src="https://github.com/user-attachments/assets/ead6be70-8e2a-42bb-8c2e-fe20d870ca84" width="150" />
   <img src="https://github.com/user-attachments/assets/c7ca0542-b725-440c-bfc8-27c538afec6a" width="150" />
@@ -16,8 +17,10 @@ Objective.
 ### Goal:
 To develop a secure journaling app that motivates users to document their thoughts and emotions while ensuring complete privacy.
 
+
 ## Category
 Lifestyle
+
 
 ## Target Audience
 Individuals who love journalling .
