@@ -80,11 +80,11 @@ Or open the project in Xcode
 
 
 ## Technologies Used
-SwiftUI: For building the app's user interface.
-UserDefaults: To track the number of journal entries and store locally (e.g., widget data).
-WidgetKit: To display the journal entry count on the home screen via a widget.
-TipKit: To provide helpful tips and guidance throughout the app.
-CryptoKit: To encrypt and securely store journal entries.
-LocalAuthentication: To allow Face ID and password authentication for accessing journals.
-UserNotifications: To send daily notifications to remind users to journal.
-Combine: For handling reactive data streams and app state.
+- SwiftUI: For building the app's user interface.
+- UserDefaults: To track the number of journal entries and store locally (e.g., widget data).
+- WidgetKit: To display the journal entry count on the home screen via a widget.
+- TipKit: To provide helpful tips and guidance throughout the app.
+- CryptoKit: To encrypt and securely store journal entries.
+- LocalAuthentication: To allow Face ID and password authentication for accessing journals.
+- UserNotifications: To send daily notifications to remind users to journal.
+- Combine: For handling reactive data streams and app state.
